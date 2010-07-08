@@ -9,4 +9,5 @@ public abstract class Weapon extends Item{
 	 * @return the value of the damage the weapon doles out
 	 */
 	public abstract int damage();
+	public abstract boolean aim(int mod,int targetMod);
 }
