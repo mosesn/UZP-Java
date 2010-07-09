@@ -1,11 +1,10 @@
 
 public abstract class Poison extends Item{
-	private String name;
 	private int dmg;
 	private int resist;
 	
 	public Poison(int thisDmg,int thisResist,String thisName){
-		name=new String(thisName);
+		super(thisName);
 		dmg=thisDmg;
 		resist=thisResist;
 	}

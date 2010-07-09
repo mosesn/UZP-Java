@@ -6,13 +6,12 @@ public class AmmoBag extends Item{
 	private Stack<Ammo> ammos;
 	private int id;
 	private int size;
-	private String name;
 	private int used;
 	
 	public <E> AmmoBag(Ammo ammo){
+		super(ammo.toString());
 		ammos.push(ammo);
 		id=ammo.getId();
-		name=ammo.toString();
 		size=0;
 		used=0;
 	}
@@ -37,7 +36,7 @@ public class AmmoBag extends Item{
 	}
 	
 	public String toString(){
-		return name + " x " + size;
+		return super.toString() + " x " + size;
 	}
 
 	public boolean isUsable() {
