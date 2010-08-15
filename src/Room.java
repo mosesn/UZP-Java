@@ -4,14 +4,12 @@ import java.util.HashSet;
 public abstract class Room {
 	
 	private HashSet<Exit> exits;
-	private Room[][] rooms;
 	private Room[] entrances;
 	private Room[] exitRooms;
 
-	public Room(int cols,int rows){
+	public Room(){
 		exits=new HashSet<Exit>();
-		rooms=new Room[cols][rows];
-		entrances=new Room[4];
+		exitRooms=new Room[4];
 	}
 	
 	public void addExits(String exitName){
