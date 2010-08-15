@@ -8,7 +8,7 @@ public abstract class Room {
 	private Room[] entrances;
 
 	public Room(int cols,int rows){
-		exits=new HashSet();
+		exits=new HashSet<Exit>();
 		rooms=new Room[cols][rows];
 		entrances=new Room[4];
 	}

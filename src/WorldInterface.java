@@ -1,4 +1,4 @@
 
-public class WorldInterface extends Interface{
+public class WorldInterface extends TextInterface{
 
 }

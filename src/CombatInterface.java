@@ -1,4 +1,4 @@
 
-public class CombatInterface extends Interface{
+public class CombatInterface extends TextInterface{
 
 }
