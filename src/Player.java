@@ -1,5 +1,6 @@
 
 public class Player extends Entity{
+	private final static double strMod=.25;
 	private int exp;
 	private int lvl;
 	
@@ -26,4 +27,27 @@ public class Player extends Entity{
 		return exp;
 	}
 
+	
+	public int useWeapon(Weapon weapon,Entity target){
+		if (aimWeapon(weapon,target)){
+			int dmg=dmgWeapon(weapon);
+			target.takeDmg(dmg);
+			return dmg;
+		}
+		else return 0;
+	}
+	
+	public int dmgWeapon(Weapon weapon){
+		return (int) (getStr()*strMod+weapon.damage());
+	}
+	
+	public boolean aimWeapon(Weapon weapon,Entity target){
+		if (weapon.isUsable()){
+			return weapon.aim(getAgi(),target.getAgi());
+		}
+		else{
+			return false;
+		}
+	}
+	
 }

@@ -64,28 +64,7 @@ public class Entity {
 	public int bruteCheck(){
 		return (int) Math.random()*20+str;
 	}
-	
-	public int useWeapon(Weapon weapon,Entity target){
-		if (aimWeapon(weapon,target)){
-			int dmg=dmgWeapon(weapon);
-			target.takeDmg(dmg);
-			return dmg;
-		}
-		else return 0;
-	}
-	
-	public int dmgWeapon(Weapon weapon){
-		return (int) (str*strMod+weapon.damage());
-	}
-	
-	public boolean aimWeapon(Weapon weapon,Entity target){
-		if (weapon.isUsable()){
-			return weapon.aim(agi,target.getAgi());
-		}
-		else{
-			return false;
-		}
-	}
+
 	
 	private boolean aim(int agi2) {
 		// TODO Auto-generated method stub
