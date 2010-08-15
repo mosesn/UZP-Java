@@ -9,14 +9,14 @@ public class CombatInterface extends TextInterface{
 			if (gone){
 				return 0;
 			}
-			entity.useweapon(hands, player);
+			enemyturn(entity);
 			
 		}
 		return 0;
 	}
 	
-	public void attack(Weapon attackWeap, Monster entity, Player player){
-		
+	public void enemyturn(Monster entity){
+		entity.attack();
 		
 	}
 	
