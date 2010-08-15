@@ -1,14 +1,17 @@
-
+/*
+ * Entities are the creatures that inhabit the game.
+ * They consist of three main attributes: Agility (agi) Strength (str) and Constitution (con)
+ * 
+ * 
+ * 
+ * 
+ * 
+ * */
 public class Entity {
 	private final static double strMod=.25;
-	private final static double hpMod=.5;
-	private final static double conMod=1.25;
-	private final static double agiMod=.1;
 	private int agi;
 	private int str;
 	private int con;
-	private int exp;
-	private int lvl;
 	private int hp;
 	private boolean alive;
 	private boolean poisoned;
@@ -21,9 +24,8 @@ public class Entity {
 		str=initStr;
 		con=initCon;
 		alive=true;
-		exp=0;
-		lvl=1;
-		hp=(int) (.5*str+5);
+
+		hp=(int) (strMod*str+5);
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -84,17 +86,8 @@ public class Entity {
 		return false;
 	}
 
-	private int square(int n){
+	public int square(int n){
 		return n*n;
-	}
-	
-	public boolean addExp(int numPts){
-		exp+=numPts;
-		if (exp>=10*square(lvl)){
-			lvl++;
-			return true;
-		}
-		else return false;
 	}
 	
 	public int getAgi(){
@@ -109,14 +102,6 @@ public class Entity {
 		return con;
 	}
 	
-	public int getExp(){
-		return exp;
-	}
-	
-	public int expToLvl(){
-		return (int) (10.0*square(lvl)-exp);
-	}
-
 	public String printStats(){
 		String stats=new String("AGI: ");
 		
