@@ -39,6 +39,10 @@ public class Entity {
 		return alive;
 	}
 	
+	public boolean isDead(){
+		return !alive;
+	}
+	
 	public boolean dodge(Weapon weapon,int targetAgi){
 		return weapon.aim(targetAgi,agi);
 	}
