@@ -7,6 +7,11 @@ public class Dungeon extends Room{
 	public Dungeon(int cols, int rows) {
 		super();
 		rooms=new Room[cols][rows];
+		for (int i=0;i<cols;i++){
+			for (int j=0;j<cols;j++){
+				rooms[i][j]=new Room();
+			}
+		}
 		entrances=new Room[4];
 		
 	}
@@ -27,54 +32,41 @@ public class Dungeon extends Room{
 	}
 
 
-	//  TODO: add code that actually connects.
-	//  thoughts: make a new Exit class that replaces the enumerated value
-	//  note: if you do this, make sure that x direction shares the same hashcode with all
-	//  other x.  An id system of 0,1,2,3 would work fine.
-	//  thoughts: use an array of rooms marked travels[]
 	public boolean connect(int x1, int y1, int x2, int y2){
 		if ((Math.abs((double) (x1-x2)))==1.0 && ((y1-y2)==0)){
 			if (x1<x2){
-				if (rooms[x1][y1].hasExit(Exit.EAST) && rooms[x2][y2].hasExit(Exit.WEST)){
-					rooms[x1][y1].setExitRoom(Exit.EAST, rooms[x2][y2]);
-					rooms[x2][y2].setExitRoom(Exit.WEST, rooms[x1][y1]);
-					return true;
-				}
-				else return false;
+				rooms[x1][y1].addExit(Exit.EAST);
+				rooms[x2][y2].addExit(Exit.WEST);
+				rooms[x1][y1].setExitRoom(Exit.EAST, rooms[x2][y2]);
+				rooms[x2][y2].setExitRoom(Exit.WEST, rooms[x1][y1]);
 			}
 			else if (x2<x1){
-				if (rooms[x2][y2].hasExit(Exit.EAST) && rooms[x1][y1].hasExit(Exit.WEST)){
-					rooms[x1][y1].setExitRoom(Exit.WEST, rooms[x2][y2]);
-					rooms[x2][y2].setExitRoom(Exit.EAST, rooms[x1][y1]);					
-					return true;
-				}
-				else return false;
+				rooms[x2][y2].hasExit(Exit.EAST);
+				rooms[x1][y1].hasExit(Exit.WEST);
+				rooms[x1][y1].setExitRoom(Exit.WEST, rooms[x2][y2]);
+				rooms[x2][y2].setExitRoom(Exit.EAST, rooms[x1][y1]);					
 			}
 			else return false;
 		}
 		else if ((Math.abs((double) (y1-y2)))==1.0 && ((x1-x2)==0)){
 			if (y1<y2){
-				if (rooms[x1][y1].hasExit(Exit.SOUTH) && rooms[x2][y2].hasExit(Exit.NORTH)){
-					rooms[x1][y1].setExitRoom(Exit.SOUTH, rooms[x2][y2]);
-					rooms[x2][y2].setExitRoom(Exit.NORTH, rooms[x1][y1]);
-					
-					return true;
-				}
-				else return false;
+				rooms[x1][y1].hasExit(Exit.SOUTH);
+				rooms[x2][y2].hasExit(Exit.NORTH);
+				rooms[x1][y1].setExitRoom(Exit.SOUTH, rooms[x2][y2]);
+				rooms[x2][y2].setExitRoom(Exit.NORTH, rooms[x1][y1]);
 			}
 			else if (y2<y1){
-				if (rooms[x2][y2].hasExit(Exit.SOUTH) && rooms[x1][y1].hasExit(Exit.NORTH)){
-					rooms[x1][y1].setExitRoom(Exit.NORTH, rooms[x2][y2]);
-					rooms[x2][y2].setExitRoom(Exit.SOUTH, rooms[x1][y1]);
-					
-					return true;
-				}
-				else return false;
+				rooms[x2][y2].hasExit(Exit.SOUTH);
+				rooms[x1][y1].hasExit(Exit.NORTH);
+				rooms[x1][y1].setExitRoom(Exit.NORTH, rooms[x2][y2]);
+				rooms[x2][y2].setExitRoom(Exit.SOUTH, rooms[x1][y1]);
 			}
 			else return false;
 
 		}
 		else return false;
+
+		return true;
 	}
 	
 	public boolean bindExit(int x,int y, Exit exit){
