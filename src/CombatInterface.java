@@ -1,11 +1,13 @@
 
 public class CombatInterface extends TextInterface{
 	public int Battle(Monster entity, Player player){
+		String action;
 		boolean gone=false;
 		printString("You have started combat with a wild "+entity+".");
 		while (!entity.isDead()){
 			printString("What do you do?!?!");
-			readString();
+			action = readString();
+			//
 			if (gone){
 				return 0;
 			}
