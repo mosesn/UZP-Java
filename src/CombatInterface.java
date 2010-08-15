@@ -9,7 +9,7 @@ public class CombatInterface extends TextInterface{
 			if (gone){
 				return 0;
 			}
-			entity.useweapon(hands, player);
+//			entity.useweapon(hands, player);
 			
 		}
 		return 0;
