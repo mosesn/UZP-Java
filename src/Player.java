@@ -3,8 +3,8 @@ public class Player extends Entity{
 	private int exp;
 	private int lvl;
 	
-	public Player(int initAgi, int initStr, int initCon) {
-		super(initAgi, initStr, initCon);
+	public Player(int initAgi, int initStr, int initCon,String name) {
+		super(initAgi, initStr, initCon, name);
 		exp=0;
 		lvl=1;
 	}

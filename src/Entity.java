@@ -9,6 +9,7 @@
  * */
 public class Entity {
 	private final static double strMod=.25;
+	private String name;
 	private int agi;
 	private int str;
 	private int con;
@@ -17,13 +18,14 @@ public class Entity {
 	private boolean poisoned;
 	private Poison poison;
 
-	public Entity(int initAgi, int initStr, int initCon) {
+	public Entity(int initAgi, int initStr, int initCon,String initName) {
 		poisoned=false;
 		poison=null;
 		agi=initAgi;
 		str=initStr;
 		con=initCon;
 		alive=true;
+		name=initName;
 
 		hp=(int) (strMod*str+5);
 		// TODO Auto-generated constructor stub
@@ -100,6 +102,10 @@ public class Entity {
 	
 	public int getCon(){
 		return con;
+	}
+	
+	public String toString(){
+		return name;
 	}
 	
 	public String printStats(){
