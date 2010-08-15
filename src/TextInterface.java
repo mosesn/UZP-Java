@@ -66,5 +66,4 @@ public class TextInterface extends Interface{
 		return reader.nextInt();
 	}
 
-
 }
